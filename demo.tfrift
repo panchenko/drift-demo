@@ -1,0 +1,9 @@
+namespace java com.example.gen
+
+service Service1 {
+  i32 method1(1: i32 arg0);
+}
+
+service Service2 {
+  i32 method2(1: i32 arg0);
+}

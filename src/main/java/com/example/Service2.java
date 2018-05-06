@@ -5,6 +5,6 @@ import io.airlift.drift.annotations.ThriftService;
 
 @ThriftService
 public interface Service2 {
-    @ThriftMethod
-    int method2(int param);
+    @ThriftMethod("method2")
+    int method(int param);
 }

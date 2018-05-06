@@ -46,8 +46,8 @@ public class Main {
         Service1 service1 = clientFactory.createDriftClient(Service1.class).get();
         Service2 service2 = clientFactory.createDriftClient(Service2.class).get();
 
-        LOGGER.info("result from service1: {}", service1.method1(10));
-        LOGGER.info("result from service2: {}", service2.method2(20));
+        LOGGER.info("result from service1: {}", service1.method(10));
+        LOGGER.info("result from service2: {}", service2.method(20));
 
         server.shutdown();
     }

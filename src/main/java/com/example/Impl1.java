@@ -7,8 +7,8 @@ public class Impl1 implements Service1 {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public int method1(int param) {
-        logger.info("invoked method1(" + param + ")");
+    public int method(int param) {
+        logger.info("invoked method(" + param + ")");
         return param + 1;
     }
 }

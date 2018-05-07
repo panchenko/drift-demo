@@ -73,9 +73,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.airlift.drift</groupId>
-            <artifactId>drift-transport-apache</artifactId>
-            <version>1.8</version>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.11.0</version>
         </dependency>
 
         <dependency>

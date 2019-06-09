@@ -21,6 +21,10 @@
         </plugins>
     </build>
 
+    <properties>
+        <drift.version>1.18</drift.version>
+    </properties>
+
     <profiles>
         <profile>
             <id>generate-idl</id>
@@ -29,7 +33,7 @@
                     <plugin>
                         <groupId>io.airlift.drift</groupId>
                         <artifactId>drift-maven-plugin</artifactId>
-                        <version>1.8</version>
+                        <version>${drift.version}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -59,23 +63,23 @@
         <dependency>
             <groupId>io.airlift.drift</groupId>
             <artifactId>drift-server</artifactId>
-            <version>1.8</version>
+            <version>${drift.version}</version>
         </dependency>
         <dependency>
             <groupId>io.airlift.drift</groupId>
             <artifactId>drift-client</artifactId>
-            <version>1.8</version>
+            <version>${drift.version}</version>
         </dependency>
         <dependency>
             <groupId>io.airlift.drift</groupId>
             <artifactId>drift-transport-netty</artifactId>
-            <version>1.8</version>
+            <version>${drift.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
-            <version>0.11.0</version>
+            <version>0.12.0</version>
         </dependency>
 
         <dependency>

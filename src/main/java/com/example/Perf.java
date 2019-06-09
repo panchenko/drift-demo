@@ -25,7 +25,7 @@ public class Perf {
         final int port = starter.getPort();
         LOGGER.info("Running server on port {}", port);
 
-        DriftNettyClientConfig clientConfig = new DriftNettyClientConfig().setPoolEnabled(true);
+        DriftNettyClientConfig clientConfig = new DriftNettyClientConfig();
         try (DriftNettyMethodInvokerFactory<?> invokerFactory = createStaticDriftNettyMethodInvokerFactory(clientConfig)) {
             DriftClientFactory clientFactory = Starter.createClientFactory(port, invokerFactory);
             Service1 service1 = clientFactory.createDriftClient(Service1.class).get();

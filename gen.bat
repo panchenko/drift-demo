@@ -1,1 +1,1 @@
-thrift-0.11.0.exe -out src/main/java -gen java demo.tfrift
+thrift-0.12.0.exe -out src/main/java -gen java:unsafe_binaries=true demo.tfrift

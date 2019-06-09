@@ -31,7 +31,7 @@ public class Starter {
         return new DriftClientFactory(
                 new ThriftCodecManager(),
                 invokerFactory,
-                new SimpleAddressSelector(ImmutableList.of(HostAndPort.fromParts("localhost", port))),
+                new SimpleAddressSelector(ImmutableList.of(HostAndPort.fromParts("localhost", port)),true),
                 ExceptionClassifier.NORMAL_RESULT);
     }
 }

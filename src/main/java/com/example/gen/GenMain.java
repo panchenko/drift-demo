@@ -22,23 +22,25 @@ public class GenMain {
                 return arg0 + 1;
             }
         });
-        TServerSocket transport = new TServerSocket(0);
-        TThreadPoolServer server = new TThreadPoolServer(new TThreadPoolServer.Args(transport)
-                .transportFactory(new TFramedTransport.Factory())
-                .processor(processor));
-        new Thread(server::serve).start();
+        try (TServerSocket transport = new TServerSocket(0)) {
+            TThreadPoolServer server = new TThreadPoolServer(new TThreadPoolServer.Args(transport)
+                    .transportFactory(new TFramedTransport.Factory())
+                    .processor(processor));
+            new Thread(server::serve, "Thrift Server").start();
 
-        final int port = transport.getServerSocket().getLocalPort();
-        LOGGER.info("Running server on port {}", port);
+            final int port = transport.getServerSocket().getLocalPort();
+            LOGGER.info("Running server on port {}", port);
 
-        TSocket clientTransport = new TSocket("localhost", port);
-        clientTransport.open();
-        final Iface client = new Service1.Client.Factory().getClient(new TBinaryProtocol(
-                new TFramedTransport(clientTransport)));
+            try (TSocket clientTransport = new TSocket("localhost", port)) {
+                clientTransport.open();
+                final Iface client = new Service1.Client.Factory().getClient(new TBinaryProtocol(
+                        new TFramedTransport(clientTransport)));
 
-        LOGGER.info("result from service1: {}", client.method1(10));
-        clientTransport.close();
+                LOGGER.info("result from service1: {}", client.method1(10));
+            }
 
-        server.stop();
+            server.stop();
+        }
+        LOGGER.info("Finished");
     }
 }
